@@ -7,14 +7,16 @@ export class SongsController {
     constructor(private songsService: SongsService) {}
     @Get()
     getAllSongs() {
-        try {
-            return this.songsService.findAllSongs();
-        } catch (e) {
-         throw new HttpException('server error',HttpStatus.INTERNAL_SERVER_ERROR)   
-        }
+        return this.songsService.findAllSongs();
+        // try {
+            
+        // } catch (e) {
+        //  throw new HttpException("server error",HttpStatus.INTERNAL_SERVER_ERROR)  
+        // }
     }
     @Get(':id')
-    getOneSong(@Param('id',new ParseIntPipe({errorHttpStatusCode:HttpStatus.NOT_ACCEPTABLE})) id: number) {
+    getOneSong(@Param('id',new ParseIntPipe({errorHttpStatusCode:HttpStatus.NOT_ACCEPTABLE}))  id: number) {
+        
         return `${typeof id }`;
         //return this.songsService.findOneSong();
     }
